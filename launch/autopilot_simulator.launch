@@ -12,7 +12,7 @@
   </include>
 
   <!-- Load Global Parameters for this MAV -->
-  <rosparam command="load" file="$(find autopilot_415class)/plane_params.yaml"/>
+  <rosparam command="load" file="$(find autopilot_me415)/plane_params.yaml"/>
 
   <!-- Spawn MAV -->
   <include file="$(find rosplane_sim)/launch/spawn_mav.launch">
@@ -22,7 +22,7 @@
 
   <group ns="$(arg mav_name)">
 
-    <node name="autopilot" pkg="autopilot_415class" type="autopilot.py" output="screen">
+    <node name="autopilot" pkg="autopilot_me415" type="autopilot.py" output="screen">
       <remap from="state" to="truth"/>
     </node>
 
