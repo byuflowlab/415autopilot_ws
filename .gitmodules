@@ -1,6 +1,6 @@
-[submodule "src/415autopilot"]
-	path = src/415autopilot
-	url = https://github.com/byuflowlab/415autopilot.git
+[submodule "src/autopilot_me415"]
+	path = src/autopilot_me415
+	url = https://github.com/byuflowlab/autopilot_me415.git
 [submodule "src/rosflight"]
 	path = src/rosflight
 	url = https://github.com/rosflight/rosflight.git
