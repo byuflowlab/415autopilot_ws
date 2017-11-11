@@ -1,26 +1,44 @@
-mass: 3.92
+# parameters definitions are from "Small Unmanned Aircraft" by Randy Beard and Tim McLain
 
+mass: 3.92  # airplane mass (kg)
+
+# mass moments of inertia (kg-m^2)
 Jx: 0.213
 Jy: 0.171
 Jz: 0.350
 Jxz: 0.04
 
-rho: 1.2682
-wing_s: 0.468
-wing_b: 1.8
-wing_c: 0.26
-wing_M: 50
-wing_epsilon: 0.1592
-wing_alpha0: 0.3040363557
+rho: 1.2682  # air density (kg/m^3)
+wing_s: 0.468  # reference area (m^2)
+wing_b: 1.8  # span (m)
+wing_c: 0.26  # mean aerodynamic chord
 
+# stall model (whole aircraft not wing)
+# CL(alpha) = (1 - sigma)*(CL0 + CL,alpha * alpha) + sigma * (2 * sign(alpha) * sin^2(alpha) * cos(alpha))
+# where sigma is a sigmoid function
+#          1 + exp(-M*(alpha-alpha0)) + exp(M*(alpha+alpha0))
+# sigma = -------------------------------------------------
+#          (1 + exp(-M*(alpha-alpha0))) * ( 1 + exp(M*(alpha+alpha0))
+wing_M: 50  # transition rate of sigmoid - see above
+wing_alpha0: 0.3040363557  # cut off in sigmoid - see above
+
+wing_epsilon: 0.1592  # not used any more
+
+# assumes that propeller wake speed is proportional to throttle setting (0--1)
+# Vexit = k_motor * throttle
+# propeller torque = -k_T_P * (k_Omega * throttle)^2
 k_motor: 30.0
 k_T_P: 0.0
 k_Omega: 0.0
 
-prop_e: 0.8
-prop_S: 0.0314
-prop_C: 1.0
+# propeller model:
+# T = 0.5*rho*Sprop*Cprop*(Vexit^2 - Va^2)
+prop_S: 0.0314  # propeller swept area (m^2)
+prop_C: 1.0  # empirical constant to adjust thrust
 
+prop_e: 0.8  # not used any more
+
+# stability/control derivatives (all dimensionless)
 C_L_O: 0.2869
 C_L_alpha: 5.1378
 C_L_beta: 0.0
@@ -82,12 +100,12 @@ C_Y_delta_e: 0.0
 C_Y_delta_r:  0.1591
 
 # trim conditions
-phi0: 0
-theta0: 0.0349 # 2 degrees
-psi0: 0
-Va0: 16.38
-delta_e0: 0.02967 # 1.7 degrees
-delta_t0: 0.4
+phi0: 0  # roll angle (rad)
+theta0: 0.0349 # pitch angle (rad)
+psi0: 0  # heading angle (rad)
+Va0: 16.38  # airspeed (m/s)
+delta_e0: 0.02967 # elevator deflection, positive down (rad)
+delta_t0: 0.4  # throttle
 
 # =============================
 # ======= Plugin Params =======
