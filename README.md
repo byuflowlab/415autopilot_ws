@@ -7,5 +7,5 @@ Then implement your autopilot function in autopilot.py
 
 To test it, launch the simulator using:
 ```
-roslaunch autopilot_415class autopilot_simulator.launch
+roslaunch autopilot_me415 autopilot_simulator.launch
 ```
