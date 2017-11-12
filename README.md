@@ -28,7 +28,7 @@ Type the following into a terminal:
 
 ```
 source ~/415autopilot_ws/devel/setup.bash
-roslaunch autopilot_415class autopilot_simulator.launch
+roslaunch autopilot_me415 autopilot_simulator.launch
 ```
 
 Click the play button in the gazebo window lower toolbar.
