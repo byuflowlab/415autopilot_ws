@@ -5,6 +5,7 @@
   <arg name="mav_name"            default="fixedwing"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find autopilot_me415)/fixed_wing.world"/>
     <arg name="paused" value="true"/>
     <arg name="gui" value="true"/>
     <arg name="verbose" value="false"/>
@@ -14,15 +15,15 @@
   <!-- Load Global Parameters for this MAV -->
   <rosparam command="load" file="$(find autopilot_me415)/plane_params.yaml"/>
 
+  <param name="/fixedwing/gps/initial_latitude" type="double" value="40.267993"/>
+  <param name="/fixedwing/gps/initial_longitude" type="double" value="-111.634930"/>
+
   <!-- Spawn MAV -->
   <include file="$(find rosplane_sim)/launch/spawn_mav.launch">
     <arg name="mav_name"            value="$(arg mav_name)" />
     <arg name="model"               value="$(find rosplane_sim)/xacro/$(arg mav_name).xacro" />
   </include>
 
-  <group ns="$(arg mav_name)">
-    <node name="autopilot" pkg="autopilot_me415" type="autopilot.py" output="screen">
-    </node>
+  <node name="autopilot" pkg="autopilot_me415" type="autopilot.py" output="screen"/>
 
-  </group>
 </launch>
