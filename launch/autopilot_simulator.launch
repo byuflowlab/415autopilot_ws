@@ -22,8 +22,16 @@
   <include file="$(find rosplane_sim)/launch/spawn_mav.launch">
     <arg name="mav_name"            value="$(arg mav_name)" />
     <arg name="model"               value="$(find rosplane_sim)/xacro/$(arg mav_name).xacro" />
+    <arg name="z" value="50" />
+    <arg name="yaw" default="3.14159"/>
   </include>
 
-  <node name="autopilot" pkg="autopilot_me415" type="autopilot.py" output="screen"/>
+  <node name="autopilot" pkg="autopilot_me415" type="autopilot.py" output="screen">
+    <!-- <param name="minAlt" type="double" value="0"/>
+    <param name="wp1_lat" type="double" value="40.267993"/>
+    <param name="wp1_lon" type="double" value="-111.634930"/> -->
+  </node>
+
+  <!-- <node name="status" pkg="autopilot_me415" type="statis_printer.py" output="screen"/> -->
 
 </launch>
