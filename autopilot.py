@@ -81,25 +81,22 @@ class autopilot:
             print "all waypoints achieved !!!"
 
     # def check_boundary(self, event):
-    #     #Selected Waypoints (Google Maps)
-    #     wps = np.array([40.267772 -111.634959;
-    #     40.267110 -111.634983;
-    #     40.267492 -111.635755;
-    #     40.266539 -111.635811]) #waypoints [lat,lon]
+    #     #---Define Boundary---#
+    #     #majoraxis end points of boundary ellipse (Google Maps)
+    #     ellipsemajor = np.array([40.268316 -111.635040; 40.266145 -111.636008])
     #
-    #     #Selected points along Major/Minor Axes of envisioned ellipse (Google Maps)
-    #     minoralarmpoint = np.array([40.266846, -111.634440]) #rotated longitude axis point around the orange line
-    #     majoralarmpoint = np.array([40.266033, -111.636203]) #rotated latitude axis point around
+    #     #Midpoint of Major Axis set as center of ellipse
+    #     center = np.array([mean(ellispemajor[:,0]), ellimpsmajor(wps[:,1])]) #center point of waypoints
     #
-    #     #Mean of waypoints set as center of ellipse (perhaps not the best point)
-    #     center = np.array([mean(wps[:,1]), mean(wps[:,2])]) #center point of waypoints
+    #     #Selected point for Minor Axis Radius (Google Maps)
+    #     ellipseminor = np.array([40.266994 -111.634407]) #rotated longitude axis point around the orange line
     #
     #     #Radius values for Major and Minor Axes
-    #     rminalarm = sqrt((minorwarnpoint[1]-center[1])^2 + (minorwarnpoint[2]-center[2])^2)*1.2 #rotated longitude radius
-    #     rmajalarm = sqrt((majoralarmpoint[1]-center[1])^2 + (majoralarmpoint[2]-center[2])^2)*1.2 #rotated loatitude radius
+    #     rminalarm = np.sqrt((ellipsemionor[0]-center[0])**2 + (ellipseminor[1]-center[1])**2) #rotated longitude radius
+    #     rmajalarm = np.sqrt((ellipsejamor[0,0]-center[0])**2 + (ellipsejamor[1,0]-center[1])**2) #rotated loatitude radius
     #
-    #     #Selectd Rotation Angle (needs adjustment likely)
-    #     rotate = 15*np.pi #angle of axes rotation
+    #     #Selectd Rotation Angle
+    #     rotate = -15*np.pi #angle of axes rotation 75 degrees from eastward axis.
     #
     #     #Equation of rotated Ellipse
     #     def ellipse(x,h,A,y,k,a,b):
