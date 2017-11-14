@@ -110,8 +110,9 @@ class autopilot:
     #
     #         return (((lon-clon)*np.cos(theta)+(lat-clat)*np.sin(theta))**2)/(rmin**2) + (((lon-clon)*np.sin(theta)-(lat-clat)*np.cos(theta))**2)/(rmaj**2)-1
     #
+    #     #---Check Current Position---#
     #     #Alarm value (1 = on ellipse)
-    #     alarm = ellipse() #TODO fill in inputs (see below function for self.gps stuff)
+    #     alarm = ellipse(self.currentGPS.lattitude,self.currentGPS.longitude,center[1],center[0],rotate,rminalarm,rmajalarm)
     #
     #     #Print Warning when approaching boundary
     #     if alarm > 0.9 && alarm <= 1.0:
