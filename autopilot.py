@@ -98,17 +98,17 @@ class autopilot:
     #     #Selectd Rotation Angle
     #     rotate = -15*np.pi #angle of axes rotation 75 degrees from eastward axis.
     #
-    #     #Equation of rotated Ellipse
-    #     def ellipse(x,h,A,y,k,a,b):
-    #         #x = gps longitude
-    #         #y = gps latitude
-    #         #h = longitude center (center[0])
-    #         #k = latitude center (center[1])
-    #         #A = angle of axes rotation
-    #         #a = minor axis radius (rotated lonitude axis)
-    #         #b = major axis radius (rotated latitude axis)
+    #     #---Equation of rotated Ellipse---#
+    #     def ellipse(lon,lat,clon,clat,theta,rmin,rmaj):
+    #         #lon = gps longitude
+    #         #lat = gps latitude
+    #         #clon = longitude center (center[0])
+    #         #clat = latitude center (center[1])
+    #         #theta = angle of axes rotation
+    #         #rmin = minor axis radius (rotated lonitude axis)
+    #         #rmaj = major axis radius (rotated latitude axis)
     #
-    #         return (((x-h)*cos(A)+(y-k)*sin(A))^2)/(a^2) + (((x-h)*sin(A)-(y-k)*cos(A))^2)/(b^2)-1
+    #         return (((lon-clon)*np.cos(theta)+(lat-clat)*np.sin(theta))**2)/(rmin**2) + (((lon-clon)*np.sin(theta)-(lat-clat)*np.cos(theta))**2)/(rmaj**2)-1
     #
     #     #Alarm value (1 = on ellipse)
     #     alarm = ellipse() #TODO fill in inputs (see below function for self.gps stuff)
