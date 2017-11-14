@@ -114,13 +114,14 @@ class autopilot:
     #     #Alarm value (1 = on ellipse)
     #     alarm = ellipse(self.currentGPS.lattitude,self.currentGPS.longitude,center[1],center[0],rotate,rminalarm,rmajalarm)
     #
+    #     #---Print Warnings/Alarms if Necessary---#
     #     #Print Warning when approaching boundary
     #     if alarm > 0.9 && alarm <= 1.0:
-    #         print "WARNING: OUTSIDE OF SAFE FLY ZONE."
+    #         rospy.logwarn("WARNING: APPROACHING NO FLY BOUNDARY.")
     #
     #     #Print Alarm when crossing boundary
     #     if alarm > 1.0:
-    #         print "ALERT!: IN NO FLY ZONE. TAKE OVER MANUAL CONTROL."
+    #         rospy.logerr("ALERT!: NO FLY BOUNDARY BREACHED. RESUME MANUAL CONTROL.")
 
     def distance(self, wp_lat, wp_lon):
         EARTH_RADIUS = 6371000.0
