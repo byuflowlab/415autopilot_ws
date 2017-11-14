@@ -80,7 +80,49 @@ class autopilot:
             print "achieved waypoint 4!"
             print "all waypoints achieved !!!"
 
-
+    # def check_boundary(self, event):
+    #     #Selected Waypoints (Google Maps)
+    #     wps = np.array([40.267772 -111.634959;
+    #     40.267110 -111.634983;
+    #     40.267492 -111.635755;
+    #     40.266539 -111.635811]) #waypoints [lat,lon]
+    #
+    #     #Selected points along Major/Minor Axes of envisioned ellipse (Google Maps)
+    #     minoralarmpoint = np.array([40.266846, -111.634440]) #rotated longitude axis point around the orange line
+    #     majoralarmpoint = np.array([40.266033, -111.636203]) #rotated latitude axis point around
+    #
+    #     #Mean of waypoints set as center of ellipse (perhaps not the best point)
+    #     center = np.array([mean(wps[:,1]), mean(wps[:,2])]) #center point of waypoints
+    #
+    #     #Radius values for Major and Minor Axes
+    #     rminalarm = sqrt((minorwarnpoint[1]-center[1])^2 + (minorwarnpoint[2]-center[2])^2)*1.2 #rotated longitude radius
+    #     rmajalarm = sqrt((majoralarmpoint[1]-center[1])^2 + (majoralarmpoint[2]-center[2])^2)*1.2 #rotated loatitude radius
+    #
+    #     #Selectd Rotation Angle (needs adjustment likely)
+    #     rotate = 15*np.pi #angle of axes rotation
+    #
+    #     #Equation of rotated Ellipse
+    #     def ellipse(x,h,A,y,k,a,b):
+    #         #x = gps longitude
+    #         #y = gps latitude
+    #         #h = longitude center (center[0])
+    #         #k = latitude center (center[1])
+    #         #A = angle of axes rotation
+    #         #a = minor axis radius (rotated lonitude axis)
+    #         #b = major axis radius (rotated latitude axis)
+    #
+    #         return (((x-h)*cos(A)+(y-k)*sin(A))^2)/(a^2) + (((x-h)*sin(A)-(y-k)*cos(A))^2)/(b^2)-1
+    #
+    #     #Alarm value (1 = on ellipse)
+    #     alarm = ellipse() #TODO fill in inputs (see below function for self.gps stuff)
+    #
+    #     #Print Warning when approaching boundary
+    #     if alarm > 0.9 && alarm <= 1.0:
+    #         print "WARNING: OUTSIDE OF SAFE FLY ZONE."
+    #
+    #     #Print Alarm when crossing boundary
+    #     if alarm > 1.0:
+    #         print "ALERT!: IN NO FLY ZONE. TAKE OVER MANUAL CONTROL."
 
     def distance(self, wp_lat, wp_lon):
         EARTH_RADIUS = 6371000.0
