@@ -27,7 +27,7 @@ catkin_make
 Type the following into a terminal:
 
 ```
-source ~/415autopilot_ws/devel/setup.bash
+source ~/repos/415autopilot_ws/devel/setup.bash
 roslaunch autopilot_me415 autopilot_simulator.launch
 ```
 
