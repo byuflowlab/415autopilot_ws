@@ -71,6 +71,18 @@ class autopilot:
 
     def check_status(self, event):
 
+        # ---- boundary checks ----
+        pos = [self.currentGPS.latitude, self.currentGPS.longitude]
+
+        ell = self.ellipse(pos)
+        if ell > 1.0:
+            print "ALERT!  Out of bounds! Resume manual control!"
+            return
+        elif ell > 0.7:
+            print "WARNING!  Close to boundary! Ready pilot."
+            return
+
+        
         # ---- altitude checks -----
         alt = self.currentGPS.altitude
 
@@ -85,18 +97,6 @@ class autopilot:
             return
         elif alt > self.ceilingwarn:
             print "WARNING!  Altitude approaching ceiling! Ready pilot."
-            return
-
-
-        # ---- boundary checks ----
-        pos = [self.currentGPS.latitude, self.currentGPS.longitude]
-
-        ell = self.ellipse(pos)
-        if ell > 1.0:
-            print "ALERT!  Out of bounds! Resume manual control!"
-            return
-        elif ell > 0.7:
-            print "WARNING!  Close to boundary! Ready pilot."
             return
 
 
@@ -117,7 +117,7 @@ class autopilot:
             print "CONGRATULATIONS! All waypoints achieved!!!"
 
 
-    def distance(pt1, pt2):
+    def distance(self, pt1, pt2):
         """pt = [lat, long]"""
         EARTH_RADIUS = 6371000.0
         distN = EARTH_RADIUS*(pt2[0] - pt1[0])*np.pi/180.0
@@ -125,14 +125,14 @@ class autopilot:
         return distE, distN, np.linalg.norm([distN, distE])
 
 
-    def ellipse(pt):
+    def ellipse(self, pt):
         """check if point is outside of boundary ellipse (ell > 1)"""
 
         center = self.bdy_center
         R = self.bdy_R
         theta = self.bdy_theta
 
-        dx, dy, _ = distance(center, pt)
+        dx, dy, _ = self.distance(center, pt)
         ct = np.cos(theta)
         st = np.sin(theta)
         ell = ((dx*ct + dy*st)/R[0])**2 + ((dx*st - dy*ct)/R[1])**2
