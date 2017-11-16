@@ -15,8 +15,9 @@
   <!-- Load Global Parameters for this MAV -->
   <rosparam command="load" file="$(find autopilot_me415)/plane_params.yaml"/>
 
-  <param name="/fixedwing/gps/initial_latitude" type="double" value="40.267993"/>
-  <param name="/fixedwing/gps/initial_longitude" type="double" value="-111.634930"/>
+  <param name="/fixedwing/gps/initial_latitude" type="double" value="40.26778432216462"/>
+  <param name="/fixedwing/gps/initial_longitude" type="double" value="-111.63506331014253"/>
+  <param name="/fixedwing/gps/initial_altitude" type="double" value="1507"/>
 
   <!-- Spawn MAV -->
   <include file="$(find rosplane_sim)/launch/spawn_mav.launch">
