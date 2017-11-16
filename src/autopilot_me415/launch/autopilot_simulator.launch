@@ -1,0 +1,37 @@
+<!-- This is a launch file that runs the bare minimum requirements to get -->
+<!-- gazebo running your a fixed-wing aircraft -->
+
+<launch>
+  <arg name="mav_name"            default="fixedwing"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find autopilot_me415)/fixed_wing.world"/>
+    <arg name="paused" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="verbose" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- Load Global Parameters for this MAV -->
+  <rosparam command="load" file="$(find autopilot_me415)/plane_params.yaml"/>
+
+  <param name="/fixedwing/gps/initial_latitude" type="double" value="40.267993"/>
+  <param name="/fixedwing/gps/initial_longitude" type="double" value="-111.634930"/>
+
+  <!-- Spawn MAV -->
+  <include file="$(find rosplane_sim)/launch/spawn_mav.launch">
+    <arg name="mav_name"            value="$(arg mav_name)" />
+    <arg name="model"               value="$(find rosplane_sim)/xacro/$(arg mav_name).xacro" />
+    <arg name="z" value="50" />
+    <arg name="yaw" default="3.14159"/>
+  </include>
+
+  <node name="autopilot" pkg="autopilot_me415" type="autopilot.py" output="screen">
+    <!-- <param name="minAlt" type="double" value="0"/>
+    <param name="wp1_lat" type="double" value="40.267993"/>
+    <param name="wp1_lon" type="double" value="-111.634930"/> -->
+  </node>
+
+  <node pkg="rosbag" type="record" name="rosbagging" args=" /fixedwing/gps /fixedwing/command"/>
+
+</launch>
