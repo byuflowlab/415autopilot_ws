@@ -24,7 +24,7 @@
     <arg name="mav_name"            value="$(arg mav_name)" />
     <arg name="model"               value="$(find rosplane_sim)/xacro/$(arg mav_name).xacro" />
     <arg name="z" value="50" />
-    <arg name="yaw" default="3.14159"/>
+    <arg name="yaw" default="3.1"/>
   </include>
 
   <node name="autopilot" pkg="autopilot_me415" type="autopilot.py" output="screen">

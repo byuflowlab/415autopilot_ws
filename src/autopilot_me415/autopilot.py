@@ -82,7 +82,7 @@ class autopilot:
             print "WARNING!  Close to boundary! Ready pilot."
             return
 
-        
+
         # ---- altitude checks -----
         alt = self.currentGPS.altitude
 
@@ -101,17 +101,21 @@ class autopilot:
 
 
         # ---- waypoint checks -----
+        _, _, d1 = self.distance(pos, self.wp1)
+        _, _, d2 = self.distance(pos, self.wp2)
+        _, _, d3 = self.distance(pos, self.wp3)
+        _, _, d4 = self.distance(pos, self.wp4)
 
-        if self.wp_state_machine == 0 and self.distance(pos, self.wp1) < self.wp_tolerance:
+        if self.wp_state_machine == 0 and d1 < self.wp_tolerance:
             self.wp_state_machine = 1
             print "YES!  Achieved waypoint 1!"
-        elif self.wp_state_machine == 1 and self.distance(pos, self.wp2) < self.wp_tolerance:
+        elif self.wp_state_machine == 1 and d2 < self.wp_tolerance:
             self.wp_state_machine = 2
             print "YES!  Achieved waypoint 2!"
-        elif self.wp_state_machine == 2 and self.distance(pos, self.wp3) < self.wp_tolerance:
+        elif self.wp_state_machine == 2 and d3 < self.wp_tolerance:
             self.wp_state_machine = 3
             print "YES!  Achieved waypoint 3!"
-        elif self.wp_state_machine == 3 and self.distance(pos, self.wp4) < self.wp_tolerance:
+        elif self.wp_state_machine == 3 and d4 < self.wp_tolerance:
             self.wp_state_machine = 4
             print "YES!  Achieved waypoint 4!"
             print "CONGRATULATIONS! All waypoints achieved!!!"
