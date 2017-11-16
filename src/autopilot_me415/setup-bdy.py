@@ -25,6 +25,10 @@ def distance(pt1, pt2):
     distE = EARTH_RADIUS*np.cos(pt1[0]*np.pi/180.0)*(pt2[1] - pt1[1])*np.pi/180.0
     return distE, distN, np.linalg.norm([distN, distE])
 
+# compute distance in meters between waypoints for simulation (N, W, Up, roll, pitch, yaw)
+# E, N, _ = distance(wp0, wp3)
+# print N, -E
+
 
 # define boundary ellipse
 ellipsemajor1 = np.array([40.268316, -111.635040])

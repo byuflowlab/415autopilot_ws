@@ -68,7 +68,7 @@
 
 
     <model name='waypoint_1'>
-      <pose frame=''>-98.29 -4.5 45.72 0 -0 0</pose>
+      <pose frame=''>-84.65754257999417 1.8205820672444881 45.72 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -121,7 +121,7 @@
     </model>
 
     <model name='waypoint_2'>
-      <pose frame=''>-55.77 -70.07 45.72 0 -0 0</pose>
+      <pose frame=''>-15.930109956726023 68.726973038479429 45.72 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
@@ -174,7 +174,60 @@
     </model>
 
     <model name='waypoint_3'>
-      <pose frame=''>-141.15 -74.66 45.72 0 -0 0</pose>
+      <pose frame=''>-132.903665156 66.9063909712 45.72 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1</iyy>
+            <iyz>0</iyz>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.25</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>0</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>0</gravity>
+      </link>
+    </model>
+
+    <model name='waypoint_4'>
+      <pose frame=''>0.0 0.0 45.72 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>1</mass>
