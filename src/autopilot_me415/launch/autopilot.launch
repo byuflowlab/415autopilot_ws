@@ -1,0 +1,22 @@
+<!-- This is a launch file that runs the bare minimum requirements to get -->
+<!-- gazebo running your a fixed-wing aircraft -->
+
+<launch>
+    <node name="autopilot" pkg="autopilot_me415" type="autopilot.py" output="screen">
+        <remap from="fixedwing/command" to="command"/>
+        <remap from="fixedwing/gps" to="gps"/>
+        <remap from="fixedwing/state" to="state"/>
+    </node>
+
+    <node name="estimator" pkg="rosplane" type="rosplane_estimator"/>
+
+    <node name="flip32" pkg="rosflight" type="rosflight_io" output="screen">
+        <param name="port" value="/dev/flip32"/>
+    </node>
+
+    <node name="gps" pkg="rosflight_utils" type="gps" output="screen">
+        <param name="port" value="/dev/gps"/>
+        <param name="baud" value="115200"/>
+    </node>
+
+</launch>
