@@ -10,8 +10,8 @@
 
     <node name="estimator" pkg="rosplane" type="rosplane_estimator"/>
 
-    <node name="flip32" pkg="rosflight" type="rosflight_io" output="screen">
-        <param name="port" value="/dev/flip32"/>
+    <node name="naze" pkg="rosflight" type="rosflight_io" output="screen">
+        <param name="port" value="/dev/naze"/>
     </node>
 
     <node name="gps" pkg="rosflight_utils" type="gps" output="screen">
