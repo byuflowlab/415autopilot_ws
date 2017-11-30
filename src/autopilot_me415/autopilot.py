@@ -2,6 +2,7 @@
 import rospy
 from rosflight_msgs.msg import GPS, Command
 import numpy as np
+from math import pi
 
 
 class autopilot:
@@ -22,7 +23,7 @@ class autopilot:
         # define boundary
         self.bdy_center = [40.2672305, -111.635524]
         self.bdy_R = [98.353826748828595, 127.49653449395105]
-        self.bdy_theta = -15*np.pi/180.0
+        self.bdy_theta = -15*pi/180.0
 
         # define waypoints
         self.wp1 = [40.26702297859316, -111.63508476781465]
@@ -60,7 +61,12 @@ class autopilot:
         # self.currentGPS.longitude # Deg
         # self.currentGPS.altitude # m
         # self.currentGPS.speed # m/s
-        # self.currentGPS.ground_course # rad clockwise from the north
+        # self.currentGPS.ground_course # atan2(east/north)
+
+        # code below computes ground course in rad clockwise from the north
+        # ground_course = self.currentGPS.ground_course
+        # if ground_course < 0:
+        #     ground_course += 2*pi
 
         command.F = 0.75  # throttle command 0.0 to 1.0
         command.x = 0.0  # aileron servo command -1.0 to 1.0  positive rolls to right
@@ -68,6 +74,7 @@ class autopilot:
         command.z = 0.0  # rudder servo command -1.0 to 1.0  positive yaws to left
 
         self.command_publisher.publish(command)
+
 
     def check_status(self, event):
 
@@ -124,8 +131,8 @@ class autopilot:
     def distance(self, pt1, pt2):
         """pt = [lat, long]"""
         EARTH_RADIUS = 6371000.0
-        distN = EARTH_RADIUS*(pt2[0] - pt1[0])*np.pi/180.0
-        distE = EARTH_RADIUS*np.cos(pt1[0]*np.pi/180.0)*(pt2[1] - pt1[1])*np.pi/180.0
+        distN = EARTH_RADIUS*(pt2[0] - pt1[0])*pi/180.0
+        distE = EARTH_RADIUS*np.cos(pt1[0]*pi/180.0)*(pt2[1] - pt1[1])*pi/180.0
         return distE, distN, np.linalg.norm([distN, distE])
 
 
