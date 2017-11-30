@@ -283,7 +283,8 @@
     <physics name='default_physics' default='0' type='ode'>
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>1000</real_time_update_rate>
+      <!-- <real_time_update_rate>1000</real_time_update_rate> -->
+      <real_time_update_rate>100</real_time_update_rate>
     </physics>
 
     <scene>
@@ -302,7 +303,7 @@
 
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>3.14796 -7.99288 40.8348 1.15202e-17 1.41964 0.02019</pose>
+        <pose>-10 -7.99288 80.8348 1.15202e-17 1.41964 0.02019</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
