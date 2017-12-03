@@ -28,7 +28,8 @@ class autopilot:
         # define waypoints
         self.wp1 = [40.26702297859316, -111.63508476781465]
         self.wp2 = [40.267641059243935, -111.63587333726502]
-        self.wp3 = [40.26658909078882, -111.6358518795929]
+        # self.wp3 = [40.26658909078882, -111.6358518795929]
+        self.wp3 = [40.26678857, -111.63552403]
         self.wp4 = [40.26778432216462, -111.63506331014253]
         self.wp_state_machine = 0
         self.wp_tolerance = 10.0  # m
@@ -122,10 +123,11 @@ class autopilot:
         elif self.wp_state_machine == 2 and d3 < self.wp_tolerance:
             self.wp_state_machine = 3
             print "YES!  Achieved waypoint 3!"
-        elif self.wp_state_machine == 3 and d4 < self.wp_tolerance:
-            self.wp_state_machine = 4
-            print "YES!  Achieved waypoint 4!"
-            print "CONGRATULATIONS! All waypoints achieved!!!"
+            print "CONGRATULATIONS!  Return to home!"
+        # elif self.wp_state_machine == 3 and d4 < self.wp_tolerance:
+        #     self.wp_state_machine = 4
+        #     print "YES!  Achieved waypoint 4!"
+        #     print "CONGRATULATIONS! All waypoints achieved!!!"
 
 
     def distance(self, pt1, pt2):
