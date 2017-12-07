@@ -79,8 +79,9 @@ class autopilot:
 
     def check_status(self, event):
 
-        # ---- boundary checks ----
         pos = [self.currentGPS.latitude, self.currentGPS.longitude]
+
+        # ---- boundary checks ----
 
         ell = self.ellipse(pos)
         if ell > 1.0:
@@ -96,10 +97,8 @@ class autopilot:
 
         if alt < self.floor:
             print "ALERT!  Altitude too low! Resume manual control!"
-            return
         elif alt < self.floorwarn:
             print "WARNING!  Altitude approaching floor! Ready pilot."
-            return
         elif alt > self.ceiling:
             print "ALERT!  Altitude too high! Resume manual control!"
             return
